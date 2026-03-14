@@ -18,9 +18,19 @@ def enterMove(board):
                 board[l][i] = "O"
     return showBoard(board)
 
-
 enterMove(board)
 
+def list_of_free_spaces(board):
+    freeSpaces = []
+    for l, c in enumerate(board):
+        for i, j in enumerate(c):
+            if j == "O" or j == "X":
+                pass
+            else:
+                freeSpaces.append(j)
+    return freeSpaces
+
+print(list_of_free_spaces(board))
 
 
 
