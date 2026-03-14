@@ -10,10 +10,17 @@ def showBoard(board):
 
 showBoard(board)
 
-# move = int(input("whats your move? "))
-# for l, c in enumerate(board): # l-> line, c-> item
-#     for i, j in enumerate(c): # i-> index, j-> value, [1, 2, 3]
-#         if j == move:
-#             board[l][i] = "O"
+def enterMove(board):
+    move = int(input("whats your move? "))
+    for l, c in enumerate(board):  # l-> line, c-> item
+        for i, j in enumerate(c):  # i-> index, j-> value, [1, 2, 3]
+            if j == move:
+                board[l][i] = "O"
+    return showBoard(board)
+
+
+enterMove(board)
+
+
 
 
