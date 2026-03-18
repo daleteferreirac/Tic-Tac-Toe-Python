@@ -34,8 +34,18 @@ def enterMove(board):
 
 enterMove(board)
 
+def computerMove(board):
+    print("it's computer time:")
+    freeSpaces = list_of_free_spaces(board)
+    i = randrange(len(freeSpaces))
+    choice = freeSpaces[i]
+    for l, c in enumerate(board):  # l-> line, c-> item
+        for i, j in enumerate(c):  # i-> index, j-> value, [1, 2, 3]
+            if j == choice:
+                board[l][i] = "X"
+    return showBoard(board)
 
-
+computerMove(board)
 
 
 
