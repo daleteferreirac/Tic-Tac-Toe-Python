@@ -55,7 +55,7 @@ def enterMove(board):
                     board[l][i] = "O"
     return showBoard(board)
 
-enterMove(board)
+
 
 def computerMove(board):
     print("it's computer time:")
@@ -68,7 +68,29 @@ def computerMove(board):
                 board[l][i] = "X"
     return showBoard(board)
 
-computerMove(board)
+
+while True:
+
+    enterMove(board)
+
+    if victory_for(board, "O"):
+        print("you win")
+        break
+
+    if list_of_free_spaces(board) == []:
+        print("draw")
+        break
+
+
+    computerMove(board)
+
+    if victory_for(board, "X"):
+        print("computer win")
+        break
+
+    if list_of_free_spaces(board) == []:
+        print("draw")
+        break
 
 
 
