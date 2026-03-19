@@ -20,6 +20,29 @@ def list_of_free_spaces(board):
                 freeSpaces.append(j)
     return freeSpaces
 
+def victory_for(board, sign):
+    # lines
+    if board[0][0] == sign and board[0][1] == sign and board[0][2] == sign:
+        return True
+    if board[1][0] == sign and board[1][1] == sign and board[1][2] == sign:
+        return True
+    if board[2][0] == sign and board[2][1] == sign and board[2][2] == sign:
+        return True
+        # cols
+    if board[0][0] == sign and board[1][0] == sign and board[2][0] == sign:
+        return True
+    if board[0][1] == sign and board[1][1] == sign and board[2][1] == sign:
+        return True
+    if board[0][2] == sign and board[1][2] == sign and board[2][2] == sign:
+        return True
+        # dials
+    if board[0][0] == sign and board[1][1] == sign and board[2][2] == sign:
+        return True
+    if board[0][2] == sign and board[1][1] == sign and board[2][0] == sign:
+        return True
+
+    return False
+
 def enterMove(board):
     move = int(input("whats your move? "))
     if move not in list_of_free_spaces(board):
