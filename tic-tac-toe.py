@@ -10,16 +10,6 @@ def showBoard(board):
 
 showBoard(board)
 
-def enterMove(board):
-    move = int(input("whats your move? "))
-    for l, c in enumerate(board):  # l-> line, c-> item
-        for i, j in enumerate(c):  # i-> index, j-> value, [1, 2, 3]
-            if j == move:
-                board[l][i] = "O"
-    return showBoard(board)
-
-enterMove(board)
-
 def list_of_free_spaces(board):
     freeSpaces = []
     for l, c in enumerate(board):
@@ -30,7 +20,19 @@ def list_of_free_spaces(board):
                 freeSpaces.append(j)
     return freeSpaces
 
-print(list_of_free_spaces(board))
+def enterMove(board):
+    move = int(input("whats your move? "))
+    for l, c in enumerate(board):  # l-> line, c-> item
+        for i, j in enumerate(c):  # i-> index, j-> value, [1, 2, 3]
+            if j == move:
+                board[l][i] = "O"
+    return showBoard(board)
+
+enterMove(board)
+
+
+
+
 
 
 
