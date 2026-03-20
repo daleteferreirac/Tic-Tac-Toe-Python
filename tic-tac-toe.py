@@ -10,6 +10,16 @@ def showBoard(board):
 
 showBoard(board)
 
+def enterMove(board):
+    move = int(input("whats your move? "))
+    for l, c in enumerate(board):  # l-> line, c-> item
+        for i, j in enumerate(c):  # i-> index, j-> value, [1, 2, 3]
+            if j == move:
+                board[l][i] = "O"
+    return showBoard(board)
+
+enterMove(board)
+
 def list_of_free_spaces(board):
     freeSpaces = []
     for l, c in enumerate(board):
@@ -20,77 +30,7 @@ def list_of_free_spaces(board):
                 freeSpaces.append(j)
     return freeSpaces
 
-def victory_for(board, sign):
-    # lines
-    if board[0][0] == sign and board[0][1] == sign and board[0][2] == sign:
-        return True
-    if board[1][0] == sign and board[1][1] == sign and board[1][2] == sign:
-        return True
-    if board[2][0] == sign and board[2][1] == sign and board[2][2] == sign:
-        return True
-        # cols
-    if board[0][0] == sign and board[1][0] == sign and board[2][0] == sign:
-        return True
-    if board[0][1] == sign and board[1][1] == sign and board[2][1] == sign:
-        return True
-    if board[0][2] == sign and board[1][2] == sign and board[2][2] == sign:
-        return True
-        # dials
-    if board[0][0] == sign and board[1][1] == sign and board[2][2] == sign:
-        return True
-    if board[0][2] == sign and board[1][1] == sign and board[2][0] == sign:
-        return True
-
-    return False
-
-def enterMove(board):
-    move = int(input("whats your move? "))
-    if move not in list_of_free_spaces(board):
-        print("invalid move, try again")
-        return enterMove(board)
-    else:
-        for l, c in enumerate(board):  # l-> line, c-> item
-            for i, j in enumerate(c):  # i-> index, j-> value, [1, 2, 3]
-                if j == move:
-                    board[l][i] = "O"
-    return showBoard(board)
-
-
-
-def computerMove(board):
-    print("it's computer time:")
-    freeSpaces = list_of_free_spaces(board)
-    i = randrange(len(freeSpaces))
-    choice = freeSpaces[i]
-    for l, c in enumerate(board):  # l-> line, c-> item
-        for i, j in enumerate(c):  # i-> index, j-> value, [1, 2, 3]
-            if j == choice:
-                board[l][i] = "X"
-    return showBoard(board)
-
-
-while True:
-
-    enterMove(board)
-
-    if victory_for(board, "O"):
-        print("you win")
-        break
-
-    if list_of_free_spaces(board) == []:
-        print("draw")
-        break
-
-
-    computerMove(board)
-
-    if victory_for(board, "X"):
-        print("computer win")
-        break
-
-    if list_of_free_spaces(board) == []:
-        print("draw")
-        break
+print(list_of_free_spaces(board))
 
 
 
