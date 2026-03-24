@@ -44,12 +44,26 @@ def victory_for(board, sign):
     return False
 
 def enterMove(board):
-    move = int(input("whats your move? "))
-    for l, c in enumerate(board):  # l-> line, c-> item
-        for i, j in enumerate(c):  # i-> index, j-> value, [1, 2, 3]
-            if j == move:
-                board[l][i] = "O"
-    return showBoard(board)
+    while True:
+        move = input("whats your move? ")
+        if not move.isdigit():
+            print("enter a number")
+            continue
+
+        move = int(move)
+
+        if move not in list_of_free_spaces(board):
+            print("invalid move, try again")
+            continue
+
+        for l, c in enumerate(board):  # l-> line, c-> item
+            for i, j in enumerate(c):  # i-> index, j-> value, [1, 2, 3]
+                if j == move:
+                    board[l][i] = "O"
+                    showBoard(board)
+                    return
+        break
+    showBoard(board)
 
 def computerMove(board):
     print("it's computer time:")
