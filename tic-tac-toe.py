@@ -3,10 +3,13 @@ from random import randrange
 board = [[1, 2, 3], [4, "X", 6], [7, 8, 9]]
 
 def showBoard(board):
-    print("+--+--+--+")
-    for i in range(3):
-        print(board[i])
-    print("+--+--+--+")
+    print("+---+---+---+")
+    for row in board:
+        print("|", end=" ")
+        for cell in row:
+            print(cell, end=" | ")
+        print()
+        print("+---+---+---+")
 
 showBoard(board)
 
