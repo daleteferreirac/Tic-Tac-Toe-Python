@@ -2,6 +2,7 @@ from random import randrange
 
 board = [[1, 2, 3], [4, "X", 6], [7, 8, 9]]
 
+# --- BOARD ---
 def showBoard(board):
     print("+---+---+---+")
     for row in board:
@@ -13,6 +14,7 @@ def showBoard(board):
 
 showBoard(board)
 
+# --- GAME LOGIC ---
 def list_of_free_spaces(board):
     freeSpaces = []
     for l, c in enumerate(board):
@@ -46,6 +48,7 @@ def victory_for(board, sign):
 
     return False
 
+# --- PLAYER ---
 def enterMove(board):
     while True:
         move = input("whats your move? ")
@@ -68,6 +71,7 @@ def enterMove(board):
         break
     showBoard(board)
 
+# --- COMPUTER ---
 def computerMove(board):
     print("it's computer time:")
     #  try win
@@ -102,8 +106,8 @@ def computerMove(board):
                 board[l][i] = "X"
     return showBoard(board)
 
+# --- MAIN LOOP ---
 while True:
-
     enterMove(board)
 
     if victory_for(board, "O"):
