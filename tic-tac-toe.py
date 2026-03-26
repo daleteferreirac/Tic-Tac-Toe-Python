@@ -70,11 +70,34 @@ def enterMove(board):
 
 def computerMove(board):
     print("it's computer time:")
+    #  try win
+    for l, c in enumerate(board):
+        for i, j in enumerate(c):
+            if j not in ["X", "O"]:  # free space
+                board[l][i] = "X"
+                if victory_for(board, "X"):
+                    showBoard(board)
+                    return
+                board[l][i] = j  # desfaz
+
+    # try block
+    for l, c in enumerate(board):
+        for i, j in enumerate(c):
+            if j not in ["X", "O"]:
+                board[l][i] = "O"
+                if victory_for(board, "O"):
+                    board[l][i] = "X"
+                    showBoard(board)
+                    return
+                board[l][i] = j  # desfaz
+
+    #  aleatory
     freeSpaces = list_of_free_spaces(board)
     i = randrange(len(freeSpaces))
     choice = freeSpaces[i]
-    for l, c in enumerate(board):  # l-> line, c-> item
-        for i, j in enumerate(c):  # i-> index, j-> value, [1, 2, 3]
+
+    for l, c in enumerate(board):
+        for i, j in enumerate(c):
             if j == choice:
                 board[l][i] = "X"
     return showBoard(board)
